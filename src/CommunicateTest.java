@@ -16,6 +16,8 @@ import java.net.Socket;
  */
 public class CommunicateTest {
 
+    private static final int CARRIAGE_RETURN = 13;
+
     public static void main(String[] args) throws IOException {
 
         // 创建一个服务器对象
@@ -32,6 +34,15 @@ public class CommunicateTest {
             byte[] dataOut = s.getBytes();
             output.write(dataOut);
             output.flush();
+
+            // 接收来自客户端的字符
+            int ascii = input.read();
+            // 如果接收到回车字符就结束循环
+            while (ascii != CARRIAGE_RETURN) {
+                char accept = (char) ascii;
+                System.out.println(accept);
+                ascii = input.read();
+            }
 
             // 关闭连接
             socket.close();
