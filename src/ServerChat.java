@@ -74,7 +74,7 @@ public class ServerChat {
     public static void main(String[] args) throws IOException {
         //创建一个通信类的对象
         ServerChat server = new ServerChat();
-        server.setUpServer(9000);
+        server.setUpServer(9005);
     }
 
 }
